@@ -1,6 +1,6 @@
 // app/components/FooterContent.tsx
-
-import React from 'react';
+'use client'
+import React, { useState,useEffect } from 'react';
 
 export interface FooterContentProps {
     page?: string;
@@ -8,7 +8,11 @@ export interface FooterContentProps {
 }
 
 export default function FooterContent({ page = 'default' }: FooterContentProps) {
-    const currentYear = new Date().getFullYear();
+    const [currentYear, setCurrentYear] = useState(2024); // 设置一个初始值
+    useEffect(() => {
+        // 在客户端更新年份
+        setCurrentYear(new Date().getFullYear());
+    }, []);
 
     const getPageSpecificContent = () => {
         switch (page) {

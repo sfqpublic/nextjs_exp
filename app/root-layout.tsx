@@ -28,9 +28,8 @@ export default function RootLayout({
           </nav>
         </header>
 
-        <main style={{ padding: '2rem', minHeight: 'calc(100vh - 200px)' }}>
+        
           {children}
-        </main>
 
         <footer style={{ padding: '1rem', backgroundColor: '#f0f0f0', textAlign: 'center' }}>
           <FooterContent {...footerProps} />

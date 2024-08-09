@@ -1,6 +1,28 @@
 import Image from "next/image";
+import prisma from "./lib/prisma";
+import { profile } from "console";
+// const prisma = new PrismaClient();
+async function createUser() {
+  await prisma.user.create({
+    data: {
+      name: "sfq1111",
+      email: "s111fq@qq.com",
+      posts: {
+        create: {
+          title: "Hello World",
+        },
+      }
 
-export default function Home() {
+    }
+  });
+
+}
+
+
+export default async function Home() {
+  // createUser();
+  const allUsers = await prisma.user.findMany({ include: { profile: true, posts: true } });
+  console.log(allUsers);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -48,6 +70,11 @@ export default function Home() {
         >
           <h2 className="mb-3 text-2xl font-semibold">
             Docs{" "}
+            <div>
+              <ul>
+                {allUsers.map((user) => <li key={user.id}>{user.name},{user.posts[0].title}</li>)}
+              </ul>
+            </div>
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>

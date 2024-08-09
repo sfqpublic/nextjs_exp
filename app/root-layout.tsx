@@ -1,8 +1,8 @@
 import React from 'react';
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
-import FooterContent,{ FooterContentProps } from './components/FooterContent';
-
+import FooterContent, { FooterContentProps } from './components/FooterContent';
+import 'antd/dist/antd.css';
 const inter = Inter({ subsets: ['latin'] });
 
 interface RootLayoutProps {
@@ -28,8 +28,8 @@ export default function RootLayout({
           </nav>
         </header>
 
-        
-          {children}
+
+        {children}
 
         <footer style={{ padding: '1rem', backgroundColor: '#f0f0f0', textAlign: 'center' }}>
           <FooterContent {...footerProps} />

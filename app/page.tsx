@@ -8,6 +8,7 @@ async function createUser() {
     data: {
       name: "sfq1111",
       email: "s111222fq@qq.com",
+      password: "123456",
       posts: {
         create: {
           title: "Hello World",

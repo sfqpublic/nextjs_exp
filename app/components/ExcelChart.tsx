@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
 import { DatePicker } from 'antd';
 import DateRangePickerComponent from './DateRangePicker'
 interface ExcelRow {
@@ -132,12 +132,13 @@ const ExcelChart: React.FC = () => {
                     <XAxis dataKey="Time" />
                     <YAxis domain={['auto', 'auto']} />
                     <Tooltip />
-                    <Legend />
                     {/* <Line type="monotone" dataKey="SE_BID" stroke="#8884d8" />
                     <Line type="monotone" dataKey="BN_BID" stroke="#82ca9d" />
                     <Line type="monotone" dataKey="SE_ASK" stroke="#ffc658" />
                     <Line type="monotone" dataKey="BN_ASK" stroke="#ff7300" /> */}
-                    <Line type="monotone" dataKey="BOC_CONV" stroke="#00C49F" label='ok' />
+                    <Legend formatter={(value, entry) => `美元 ${value}`} />
+
+                    <Line type="monotone" dataKey="BOC_CONV" stroke="#00C49F" label={false} legendType='circle' ></Line>
 
                 </LineChart>
 
